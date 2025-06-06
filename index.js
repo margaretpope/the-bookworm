@@ -2,7 +2,7 @@ const form = document.querySelector('form')
 const bookSection = document.getElementById('book')
 const librarySection = document.getElementById('library')
 const bookList = document.createElement('ol');
-const apiKey = 'AIzaSyD0ZJLzJ-wbH0PYL2GLWnjzGwwGIHv65pY'
+const apiKey = process.env.API_KEY
 
 form.onsubmit = async function(e) {
     e.preventDefault()
