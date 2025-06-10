@@ -1,7 +1,7 @@
 const auth = require("./auth");
 const user = require("./user");
-const recipes = require("./search");
-const restaurants = require("./library")
+const search = require("./search");
+const library = require("./library");
 
 module.exports = {
   auth,

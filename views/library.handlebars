@@ -1,0 +1,17 @@
+{{> header}}
+<main>
+    <h1>My Library</h1>
+    {{#if library.length}}
+        <ul>
+            {{#each library}}
+                <li>
+                    <p>{{this.title}}</p>
+                    <p>{{this.authors}}</p>
+                    <img src = "{{this.thumbnail}}" alt="cover" />
+                </li>
+            {{/each}}
+        </ul>
+    {{else}}
+        <p>You haven't added any books to your library yet! <a href="/search">Search</a> for your latest read to get started.</p>   
+</main>
+{{> footer}}

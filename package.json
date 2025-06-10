@@ -1,0 +1,35 @@
+{
+  "name": "the-bookworm",
+  "version": "1.0.0",
+  "description": "My application, The Bookworm, will allow users to create an account, search for the book they just finished reading, and add that book to their library. The app will keep a tally how many books total the user has read, as well as how many books they have read by a particular author. It will be a fun way for avid readers to track what they have read and might motivate those who do not read as much to start so they can see their book count go up.",
+  "main": "index.js",
+  "config": {
+    "DB_NAME": "the_bookworm"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "npm run mysql && nodemon index.js",
+    "mysql": "npm run mysql:restart && npm run mysql:check",
+    "mysql:restart": "npm run mysql:stop; npm run mysql:start",
+    "mysql:start": "export FLAG=-d && npm run mysql:run",
+    "mysql:start:log": "export FLAG=-it && npm run mysql:run",
+    "mysql:start:shell": "npm run mysql:restart && npm run mysql:check && npm run mysql:shell",
+    "mysql:run": "docker run $FLAG --rm -p 3306:3306 -v $(pwd)/schema:/docker-entrypoint-initdb.d --name=focused_goldwasser -e MYSQL_ALLOW_EMPTY_PASSWORD=root -e MYSQL_DATABASE=$npm_package_config_DB_NAME mysql:8 mysqld --authentication_policy=mysql_native_password",
+    "mysql:stop": "docker container stop focused_goldwasser",
+    "mysql:shell": "docker exec -it focused_goldwasser mysql",
+    "mysql:check": "until docker exec focused_goldwasser mysql -e \"use $npm_package_config_DB_NAME; show tables;\"; do echo ...; sleep 1; done && sleep 3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/margaretpope/the-bookworm.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/margaretpope/the-bookworm/issues"
+  },
+  "homepage": "https://github.com/margaretpope/the-bookworm#readme"
+}
+
