@@ -15,7 +15,7 @@
     "mysql:start": "export FLAG=-d && npm run mysql:run",
     "mysql:start:log": "export FLAG=-it && npm run mysql:run",
     "mysql:start:shell": "npm run mysql:restart && npm run mysql:check && npm run mysql:shell",
-    "mysql:run": "docker run $FLAG --rm -p 3306:3306 -v $(pwd)/schema:/docker-entrypoint-initdb.d --name=focused_goldwasser -e MYSQL_ALLOW_EMPTY_PASSWORD=root -e MYSQL_DATABASE=$npm_package_config_DB_NAME mysql:8 mysqld --authentication_policy=mysql_native_password",
+    "mysql:run": "docker run $FLAG -p 3306:3306 -v $(pwd)/schema:/docker-entrypoint-initdb.d --name=focused_goldwasser -e MYSQL_ALLOW_EMPTY_PASSWORD=root -e MYSQL_DATABASE=$npm_package_config_DB_NAME mysql:8 mysqld",
     "mysql:stop": "docker container stop focused_goldwasser",
     "mysql:shell": "docker exec -it focused_goldwasser mysql",
     "mysql:check": "until docker exec focused_goldwasser mysql -e \"use $npm_package_config_DB_NAME; show tables;\"; do echo ...; sleep 1; done && sleep 3"
@@ -30,6 +30,18 @@
   "bugs": {
     "url": "https://github.com/margaretpope/the-bookworm/issues"
   },
-  "homepage": "https://github.com/margaretpope/the-bookworm#readme"
+  "homepage": "https://github.com/margaretpope/the-bookworm#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "axios": "^1.9.0",
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.2",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "express-handlebars": "^8.0.3",
+    "express-mysql-session": "^3.0.3",
+    "express-session": "^1.18.1"
+  }
 }
-

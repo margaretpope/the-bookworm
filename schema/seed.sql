@@ -1,4 +1,4 @@
-USE the_bookworm;
+CREATE DATABASE IF NOT EXISTS the_bookworm;
 
-INSERT INTO users (username, passoword)
+INSERT INTO users (username, password)
 VALUES ("", "");

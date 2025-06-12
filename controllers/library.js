@@ -1,7 +1,7 @@
 const db = require("../config/connection");
 
 //add to library when button clicked in search
-export async function addToLibrary(req, res) {
+async function addToLibrary(req, res) {
     const {bookId, title, authors} = req.body;
     try {
         const [currentLibrary] = await db.query(
@@ -11,7 +11,7 @@ export async function addToLibrary(req, res) {
             return res.json({message: 'This book is already in your library!'})
         }
         const [result] = await db.query (
-        'INSERT INTO library (bookId, title, authors, thumbnail) values (?, ?, ?)',
+        'INSERT INTO library (book_id, title, authors, user_id) values (?, ?, ?, ?)',
         [{bookId, title, authors}, req.params.user_id]);
         res.json({message: `${title} was added to your library!`});
     } catch (error) {
@@ -21,7 +21,7 @@ export async function addToLibrary(req, res) {
 };
 
 //display library when user logged in
-export async function renderLibrary(req, res) {
+async function renderLibrary(req, res) {
     try {
         const [library] = await db.query('SELECT * FROM library WHERE user_id = ?');
         res.render('library', {library}, req.params.user_id);
@@ -29,5 +29,10 @@ export async function renderLibrary(req, res) {
         console.error('error finding library', error);
         res.status(500).json({error: 'error finding library'});
     }
+}
+
+module.exports = {
+    addToLibrary,
+    renderLibrary
 };
 

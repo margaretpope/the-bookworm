@@ -1,4 +1,4 @@
-USE the_bookworm;
+CREATE DATABASE IF NOT EXISTS the_bookworm;
 
 CREATE TABLE users (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -10,7 +10,7 @@ CREATE TABLE library (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   book_id VARCHAR(100) NOT NULL,
   title VARCHAR(100) NOT NULL,
-  author VARCHAR(100) NOT NULL,
+  authors VARCHAR(100) NOT NULL,
   user_id INT NOT NULL,
   FOREIGN KEY (user_id)
     REFERENCES users(id)

@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const controllers = require("../controllers");
 const checkAuth = require("../middleware/auth");
+const { handleBookSearch } = require("../controllers/search")
+const { addToLibrary } = require("../controllers/library")
 
 router.get("/", ({ session: { isLoggedIn } }, res) => {
   res.render("index", { isLoggedIn });
@@ -20,6 +22,12 @@ router.get("/library", checkAuth, ({ session: { isLoggedIn } }, res) => {
   res.render ("library", { isLoggedIn });
 });
 
-router.post('/library', controllers.library.addToLibrary);
+router.post("/library", addToLibrary);
+
+router.get("/bookSearch", handleBookSearch);
+
+router.get('/search', (req, res) => {
+  res.render('search');
+});
 
 module.exports = router;

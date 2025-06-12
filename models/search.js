@@ -16,9 +16,9 @@ async function bookSearch(userSearch) {
     } catch(err) {
         console.error(err)
     }
-    res.render("books", {isLoggedIn, response})
+    res.render("search", {isLoggedIn, response})
 }
 
-exports = {
+module.exports = {
     bookSearch,
 }

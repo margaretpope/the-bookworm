@@ -1,17 +1,22 @@
-import bookSearch from "..models/search"
-const db = require("../config/connection")
+const { bookSearch } = require("../models/search");
+const db = require("../config/connection");
 
-export async function bookSearch(req, res) {
+//pull search results from search model/API call
+async function handleBookSearch(req, res) {
     const {query} = req.query;
     if (!query) {
-        return res.render('books', {error: 'please enter a book title'});
+        return res.render('search', {error: 'please enter a book title'});
     }
     try {
-        const books = await models.search.bookSearch(query);
-        res.status('books', {books, searchQuery: query});
+        const books = await bookSearch(query);
+        res.render('search', {books, searchQuery: query});
     } catch (error) {
         console.error('Error:', error.message);
-        res.render('books', {error: 'unable to fetch books'});
+        res.render('search', {error: 'unable to fetch books'});
     }
 }
+
+module.exports = { 
+    handleBookSearch
+};
 

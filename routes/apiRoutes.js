@@ -6,8 +6,8 @@ router.post("/login", controllers.auth.login);
 router.get("/logout", controllers.auth.logout);
 router.post("/signup", controllers.user.create);
 
-//API results
-router.get("/bookSearch", checkAuth, controllers.search.bookSearch)
+//external API results
+router.get("/bookSearch", checkAuth, controllers.search.handleBookSearch)
 
 
 
