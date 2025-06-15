@@ -22,7 +22,7 @@ router.get("/library", checkAuth, ({ session: { isLoggedIn } }, res) => {
   res.render ("library", { isLoggedIn });
 });
 
-router.post("/library", addToLibrary);
+router.post("/library/:user_id", addToLibrary);
 
 router.get("/bookSearch", handleBookSearch);
 

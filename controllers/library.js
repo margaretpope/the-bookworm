@@ -3,6 +3,7 @@ const db = require("../config/connection");
 //add to library when button clicked in search
 async function addToLibrary(req, res) {
     const {bookId, title, authors} = req.body;
+    const authorString = Array.isArray(authors) ? authors.join(', ') : authors || '';
     try {
         const [currentLibrary] = await db.query(
             'SELECT * FROM library WHERE book_id = ?',
@@ -12,7 +13,7 @@ async function addToLibrary(req, res) {
         }
         const [result] = await db.query (
         'INSERT INTO library (book_id, title, authors, user_id) values (?, ?, ?, ?)',
-        [{bookId, title, authors}, req.params.user_id]);
+        [bookId, title, authorString, req.session.user_id]);
         res.json({message: `${title} was added to your library!`});
     } catch (error) {
         console.error('Error adding to library', error);
