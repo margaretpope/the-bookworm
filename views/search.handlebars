@@ -1,25 +1,27 @@
 {{> header}}
 <main>
-    <h1>What book have you finished reading? Search for it here and add it to your library!</h1>
+    <h1>What book have you finished reading?</h1>
+    <h2>Search for it here and add it to your library!</h2>
     {{!search form}}
     <form action="/bookSearch" method="GET">
         <label for="userSearch">Search by title or author:</label>
         <input type="text" name="query" id="userSearch" placeholder="Search...">
         <button class="btn">Search</button>
     </form>
+    <div id = "message"></div>
     {{!display search results}}
     {{#if error}}
         <p>{{error}}</p>
     {{/if}}
     {{#if searchQuery}}
         {{#if books}}
-            <ul>
+            <ul class="book">
                 {{#each books}}
                     <li>
                         <p>{{this.title}}</p>
                         <p>{{this.authors}}</p>
                         <img src="{{this.thumbnail}}" alt="cover">
-                        <button class="add-book" data-book-id="{{this.id}}" data-title="{{this.title}}" data-author="{{this.authors}}">Add to Library</button> 
+                        <button class="add-book" data-book-id="{{this.id}}" data-title="{{this.title}}" data-authors="{{json this.authors}}" data-thumbnail="{{this.thumbnail}}">Add to Library</button> 
                     </li>
                 {{/each}}
             </ul>

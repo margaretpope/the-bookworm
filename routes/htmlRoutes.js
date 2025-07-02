@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const controllers = require("../controllers");
 const checkAuth = require("../middleware/auth");
-const { handleBookSearch } = require("../controllers/search")
-const { addToLibrary } = require("../controllers/library")
+const {handleBookSearch} = require("../controllers/search");
+const {renderLibrary} = require("../controllers/library")
 
 router.get("/", ({ session: { isLoggedIn } }, res) => {
   res.render("index", { isLoggedIn });
@@ -18,11 +18,7 @@ router.get("/signup", async (req, res) => {
   res.render("signup", { error: req.query.error });
 });
 
-router.get("/library", checkAuth, ({ session: { isLoggedIn } }, res) => {
-  res.render ("library", { isLoggedIn });
-});
-
-router.post("/library/:user_id", addToLibrary);
+router.get("/library", checkAuth, renderLibrary);
 
 router.get("/bookSearch", handleBookSearch);
 

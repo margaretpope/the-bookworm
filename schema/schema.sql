@@ -11,6 +11,7 @@ CREATE TABLE library (
   book_id VARCHAR(100) NOT NULL,
   title VARCHAR(100) NOT NULL,
   authors VARCHAR(100) NOT NULL,
+  thumbnail VARCHAR(2000) NOT NULL,
   user_id INT NOT NULL,
   FOREIGN KEY (user_id)
     REFERENCES users(id)

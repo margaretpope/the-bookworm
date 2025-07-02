@@ -23,7 +23,11 @@ app.use(
   })
 );
 
-app.engine("handlebars", exphbs.engine());
+app.engine("handlebars", exphbs.engine({
+  helpers: {
+    json: (context) => JSON.stringify(context),
+  }
+}));
 app.set("view engine", "handlebars");
 
 app.use(express.json());

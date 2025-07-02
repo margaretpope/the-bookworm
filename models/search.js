@@ -2,7 +2,7 @@ const axios = require('axios')
 
 async function bookSearch(userSearch) {
     try {
-        response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${userSearch}&maxResults=5`,
+        const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${userSearch}&maxResults=5`,
             {headers: {
                 'X-Api-Key': process.env.API_KEY
             }})
@@ -14,9 +14,9 @@ async function bookSearch(userSearch) {
             thumbnail: item.volumeInfo.imageLinks?.thumbnail,
         }))
     } catch(err) {
-        console.error(err)
+        console.error(err);
+        return [];
     }
-    res.render("search", {isLoggedIn, response})
 }
 
 module.exports = {

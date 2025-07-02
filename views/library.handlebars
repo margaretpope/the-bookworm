@@ -1,12 +1,13 @@
 {{> header}}
 <main>
     <h1>My Library</h1>
+    <h2>You have read {{bookCount}} books!</h2>
     {{#if library.length}}
         <ul>
             {{#each library}}
                 <li>
                     <p>{{this.title}}</p>
-                    <p>{{this.authors}}</p>
+                    <p>by {{this.authors}}</p>
                     <img src = "{{this.thumbnail}}" alt="cover" />
                 </li>
             {{/each}}
