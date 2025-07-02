@@ -4,9 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const messageBox = document.getElementById('message');
     document.querySelectorAll('.add-book').forEach(button => {
         button.addEventListener("click", async () => {
-            if (!isLoggedIn) {
-                alert("Login to add books to your library!");
-            }
             const bookId = button.dataset.bookId;
             const title = button.dataset.title;
             const authorsArr = button.dataset.authors;
