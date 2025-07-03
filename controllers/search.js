@@ -5,7 +5,7 @@ const db = require("../config/connection");
 async function handleBookSearch(req, res) {
     const {query} = req.query;
     if (!query) {
-        return res.render('search', {error: 'please enter a book title'});
+        return res.render('search', {isLoggedIn: req.session.isLoggedIn, error: 'please enter a book title'});
     }
     try {
         const books = await bookSearch(query);

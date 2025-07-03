@@ -22,8 +22,8 @@ router.get("/library", checkAuth, renderLibrary);
 
 router.get("/bookSearch", handleBookSearch);
 
-router.get('/search', (req, res) => {
-  res.render('search');
+router.get('/search', checkAuth, (req, res) => {
+  res.render('search', {isLoggedIn: req.session.isLoggedIn});
 });
 
 module.exports = router;

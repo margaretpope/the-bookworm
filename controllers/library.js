@@ -27,7 +27,7 @@ async function renderLibrary(req, res) {
         const userId = req.session.user_id;
         const [library] = await db.query('SELECT * FROM library WHERE user_id = ?', [userId]);
         const bookCount = library.length;
-        res.render('library', {library, bookCount});
+        res.render('library', {isLoggedIn: req.session.isLoggedIn, library, bookCount});
     } catch (error) {
         console.error('error finding library', error);
         res.status(500).json({error: 'error finding library'});

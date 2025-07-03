@@ -1,6 +1,6 @@
 {{> header}}
 <main>
-    <h1>Login to view your library!</h1>
+    <h1>Login to start searching and view your library!</h1>
     <form class="login-form" action="/api/login" method="POST">
         <label for="username">Username:</label>
         <input type="text" name="username" id="username">
@@ -11,7 +11,5 @@
         {{/if}}
         <button class="btn">Login</button>
     </form>
-    {{!<p>Currently, you are {{#unless isLoggedIn}} {{!NOT {{/unless}} {{!logged in.</p>}}
-    {{!<p>Use the links above to {{#if isLoggedIn}} {{!logout{{else}} {{!login or create an account{{/if}}{{!.</p>}}
 </main>  
 {{> footer}}
