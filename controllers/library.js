@@ -9,7 +9,7 @@ async function addToLibrary(req, res) {
             'SELECT * FROM library WHERE book_id = ? AND user_id = ?',
             [bookId, userId]);
         if (currentLibrary.length > 0) {
-            return res.json({message: 'This book is already in your library!'})
+            return res.json({message: `${title} is already in your library!`})
         }
         const [result] = await db.query (
         'INSERT INTO library (book_id, title, authors, thumbnail, user_id) values (?, ?, ?, ?, ?)',

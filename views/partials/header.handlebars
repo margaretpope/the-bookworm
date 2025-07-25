@@ -1,12 +1,22 @@
 <header>
-  <h1><a href = "/"><img src="logo.png" alt="logo" width="200"></a></h1>
-    <a href="/" class="nav">Home</a>
-    <a href="/search" class="nav">Book Search</a>
-    <a href="/library" class="nav">My Library</a>
-  {{#if isLoggedIn}}
-    <a href="/api/logout" class="nav">Logout</a>
-  {{else}}
-    <a href="/login" class="nav">Login</a>
-    <a href="/signup" class="nav">Sign Up</a>
-  {{/if}}
+  <div class="nav-container">
+      <h1 class="logo">
+        <a href = "/">
+          <img src="logo_desktop.png" alt="logo" width="200" class="logo-desktop">
+          <img src="logo_mobile.png" alt="logo" width="100" class="logo-mobile">
+        </a>
+      </h1>
+      <button id="menuDropdown" class="dropdown">Menu</button>
+  </div>    
+      <nav class="nav" id="nav">
+          <a href="/">Home</a>
+          <a href="/search">Book Search</a>
+          <a href="/library">My Library</a>
+          {{#if isLoggedIn}}
+            <a href="/api/logout">Logout</a>
+          {{else}}
+            <a href="/login">Login</a>
+            <a href="/signup">Sign Up</a>
+          {{/if}}
+      </nav>
 </header>

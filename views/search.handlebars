@@ -1,33 +1,35 @@
 {{> header}}
 <main>
-    <h1>What book have you finished reading?</h1>
-    <h2>Search for it here and add it to your library!</h2>
-    {{!search form}}
-    <form action="/bookSearch" method="GET">
+    <div class="form-box">
+        <h1>What book have you finished reading?</h1>
+        <p>Search for it here and add it to your library!</p>
+        {{!search form}}
+        <form action="/bookSearch" method="GET">
         <label for="userSearch">Search by title or author:</label>
         <input type="text" name="query" id="userSearch" placeholder="Search...">
         <button class="btn">Search</button>
-    </form>
-    <div id = "message"></div>
+        </form>
+    </div>
+    <div id= "message"></div>
+
     {{!display search results}}
     {{#if error}}
         <p>{{error}}</p>
     {{/if}}
     {{#if searchQuery}}
         {{#if books}}
-            <ul class="book">
+            <div class="books">
                 {{#each books}}
-                    <li>
-                        <p>{{this.title}}</p>
-                        <p>{{this.authors}}</p>
+                    <div class="book-results">
                         <img src="{{this.thumbnail}}" alt="cover">
+                        <h3>{{this.title}}</h3>
+                        <p>by: {{this.authors}}</p>
                         <button class="add-book" data-book-id="{{this.id}}" data-title="{{this.title}}" data-authors="{{json this.authors}}" data-thumbnail="{{this.thumbnail}}">Add to Library</button> 
-                    </li>
+                    </div>
                 {{/each}}
-            </ul>
+            </div>
         {{else}}
             <p>Can't find you're book. Please try again!</p>   
         {{/if}}
     {{/if}}    
 </main>
-{{> footer}}

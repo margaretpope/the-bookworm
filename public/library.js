@@ -20,6 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const result = await res.json();
                 if(messageBox) {
                     messageBox.textContent = result.message || "Added to library!";
+                    messageBox.style.display = "block";
+                    setTimeout(() => {messageBox.style.display = 'none';}, 4000);
                 }
             } catch(err) {
                 console.error('unable to add to library', err);

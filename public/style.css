@@ -4,51 +4,92 @@ body {
 }
 
 .container {
-    max-width: 1000px;
-    margin: auto;
+    max-width: 1400px;
+    margin: 0 auto;
     padding: 20px;
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 15px;
+    padding: 20px;
     background-color: #b1d6bb;
 }
 
-.nav {
+.nav-container {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+}
+
+.dropdown {
+    margin-left: auto;
+    padding: 8px 14px;
+    margin-top: 10px;
+    font-family: "Cactus Classical Serif", serif;
+    color:#132249;
+    cursor: pointer;
+    border: 2px solid #132249;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    background-color: #fffef0;
+}
+
+.nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.nav.show {
+    display: flex;
+}
+
+.nav a {
     font-family: "Cactus Classical Serif", serif;
     font-weight: 400;
     font-style: normal;
     text-transform: uppercase;
     color: #132249;
+    text-decoration: none;
+    text-align: right;
+    padding-right: 30px; 
 }
 
-.nav:hover {
-    color: #fffef0;
+.logo {
+    flex: 1;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.logo-desktop {
+    display: inline;
+}
+
+.logo-mobile {
+    display: none;
 }
 
 h1 {
     font-family: "Homemade Apple", cursive;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 2.25rem;
+    font-size: 2rem;
+    color: #132249;
 }
 
 h2 {
     font-family: "Cactus Classical Serif", serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    color: #132249;
 }
 
 p {
     font-family: "Cactus Classical Serif", serif;
-    font-weight: 400;
-    font-style: normal;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #132249;
 }
 
 form {
@@ -63,18 +104,213 @@ form {
     line-height: 2;
 }
 
+form input {
+    width: 70%;
+    padding: 7px;
+    font-size: 1rem;
+}
+
 button {
     font-family: "Cactus Classical Serif", serif;
     font-weight: 400;
     font-style: normal;
     color: #132249;
     margin: 15px;
+    cursor: pointer;
 }
 
-#message{
+.form-box {
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3);
+    padding: 15px 15px;
+    max-width: 750px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    border:1px solid #f25d57;
+}
+
+.form-box h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.book-results {
+    background-color: #fffef0;
+    border-radius: 10px;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.book-results:hover {
+    transform: scale(1.07);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.book-results h3 {
     font-family: "Cactus Classical Serif", serif;
-    font-weight: 400;
-    font-style: normal;
-    color: #f25d57;
+    font-size: 1.1rem;
+    font-style: italic;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.book-results p {
+    font-family: "Cactus Classical Serif", serif;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.book-results img {
+    width: 120px;
+    margin-bottom: 10px;
+}
+
+.add-book {
+    cursor: pointer;
+    color: #132249;
+}
+
+#message {
+    display: none;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 25px auto;
+    max-width: 600px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    color:#fffef0;
+    background-color: #f25d57;
+    font-size: 1rem;
+    text-align: center;
+    font-family: "Cactus Classical Serif", serif;
+    align-items: center;
+}
+
+.library-layout {
+    display: flex;
+    gap: 25px;
+    padding: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.library-aside {
+    flex: 0 0 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.book-count {
+    width: 150px;
+    padding: 6px;
+    border-radius: 10px;
+    margin: 10px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    color:#fffef0;
+    background-color: #f25d57;
+    font-family: "Homemade Apple", cursive;
+    font-size: 45px;
+    text-align: center;
+}
+
+.library-books {
+    flex: 1;
+}
+
+.books-in-library {
+    background-color: #fffef0;
+    border-radius: 10px;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.books-in-library h3 {
+    font-family: "Cactus Classical Serif", serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.books-in-library p {
+    font-family: "Cactus Classical Serif", serif;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.books {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+}
+
+@media (max-width: 992px) {
+    .nav {
+        display: flex;
+        flex-direction: column;
+        max-height: 0;
+        width: 100%;
+        padding: 10px;
+        margin-top: 15px;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .nav.show {
+        max-height: 350px;
+        padding: 10px 20px;
+    }
+
+    .nav a {
+        padding: 5px;
+        text-align: right;
+    }
+
+    .logo-desktop {
+        display: none;
+    }
+
+    .logo-mobile {
+        display: inline;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    .book-results {
+        width: 100%;
+    }
+
+    .library-layout {
+        flex-direction: column;
+    }
+
+    .library-aside {
+        flex: unset;
+        width: 100%;
+    }
+
+    .library-books {
+        width: 100%;
+    }
+
+    .books {
+        justify-content: center;
+    }
 }
 

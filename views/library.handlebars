@@ -1,19 +1,28 @@
 {{> header}}
 <main>
-    <h1>My Library</h1>
-    <h2>You have read {{bookCount}} books!</h2>
     {{#if library.length}}
-        <ul>
-            {{#each library}}
-                <li>
-                    <p>{{this.title}}</p>
-                    <p>by {{this.authors}}</p>
-                    <img src = "{{this.thumbnail}}" alt="cover" />
-                </li>
-            {{/each}}
-        </ul>
+        <div class="library-layout">
+            <aside class="library-aside">
+                <h1>My Library</h1>
+                <h2>Book Count:</h2>
+                <div class="book-count">{{bookCount}}</div>
+            </aside>
+            <section class="library-books">
+                <div class="books">
+                    {{#each library}}
+                        <div class="books-in-library">
+                            <img src = "{{this.thumbnail}}" alt="cover" />
+                            <h3>{{this.title}}</h3>
+                            <p>by {{this.authors}}</p>
+                        </div>
+                    {{/each}}
+                </div>
+            </section>
+        </div>
     {{else}}
-        <p>You haven't added any books to your library yet! <a href="/search">Search</a> for your latest read to get started.</p>   
+        <div class="form-box">
+            <h1>My Library</h1>
+            <p>You haven't added any books to your library yet! <a href="/search">Search</a> for your latest read to get started.</p>
+        </div>        
     {{/if}}
 </main>
-{{> footer}}
