@@ -5,17 +5,17 @@ async function login(req, res) {
     const { username, password } = req.body;
 
     if (!username || !password)
-      return res.redirect("/login?error=must include username and password");
+      return res.redirect("/login?error=Must include username and password.");
 
     const user = await User.findByUsername(username);
 
     if (!user)
-      return res.redirect("/login?error=username or password is incorrect");
+      return res.redirect("/login?error=Username or password is incorrect!");
 
     const passwordMatches = await User.checkPassword(password, user.password);
 
     if (!passwordMatches)
-      return res.redirect("/login?error=username or password is incorrect");
+      return res.redirect("/login?error=Username or password is incorrect!");
 
     req.session.user_id = user.id;
     req.session.isLoggedIn = true;

@@ -7,10 +7,11 @@
         <input type="text" name="username" id="username">
         <label for="password">Password:</label>
         <input type="password" name="password" id="password" required>
-        {{#if error}}
-            <p class="login-error">{{error}}</p>
-        {{/if}}
         <button class="btn">Login</button>
         </form>
+        <a href="/signup" class="link"><button class="btn">Or Create an Account</button></a>
+        {{#if error}}
+        <p class="login-error">{{error}}</p>
+        {{/if}}
     </div>
 </main>

@@ -16,7 +16,11 @@ async function create(req, res) {
     req.session.save(() => res.redirect("/"));
   } catch (err) {
     console.log(err);
-    return res.redirect(`/signup?error=${err.message}`);
+    let errorMessage = "An unexpected error occured.";
+    if(err.code === "ER_DUP_ENTRY" || (err.sqlMessage && err.sqlMessage.includes("Duplicate entry"))) {
+      errorMessage = "Username already in use. Try another one!";
+    }
+    return res.redirect(`/signup?error=${encodeURIComponent(errorMessage)}`);
   }
 }
 
