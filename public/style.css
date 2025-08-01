@@ -104,7 +104,9 @@ form {
 }
 
 form input {
-    width: 70%;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
     padding: 7px;
     font-size: 1rem;
     font-family: "Cactus Classical Serif", serif;
@@ -302,8 +304,21 @@ button {
         display: inline;
     }
 
+    .form-box {
+        padding: 10px;
+        margin: 10px;
+        box-sizing: border-box;
+    }
+
     form {
         width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+
+    form input {
+        width: 90%;
+        max-width: 100%;
     }
 
     .book-results {
